@@ -1,8 +1,8 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Cloudflare Pages configuration
-  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
+  // Cloudflare Pages configuration - removed export mode for Server Actions support
+  // output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
   swcMinify: true,
   compress: process.env.NODE_ENV === 'production',
   poweredByHeader: false,
@@ -76,7 +76,7 @@ const nextConfig = {
   },
   
   images: {
-    unoptimized: false, // Removed since we're using standalone
+    unoptimized: true, // Required for Cloudflare Pages
     remotePatterns: [
       {
         protocol: 'https',
