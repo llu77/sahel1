@@ -15,7 +15,7 @@ export const Logo: React.FC<LogoProps> = ({
   forPrint = false
 }) => {
   // Use local logo file
-  const logoUrl = "/logo.png";
+  const logoUrl = "/logo.svg";
   
   if (forPrint) {
     // For print, use img tag for better compatibility
