@@ -1,0 +1,370 @@
+{
+  "name": "sahl-app",
+  "production_branch": "main",
+  "preview_branch": "develop",
+  "build": {
+    "command": "npm run build",
+    "directory": ".next",
+    "environment": {
+      "NODE_VERSION": "18",
+      "NPM_VERSION": "9"
+    }
+  },
+  "deployment": {
+    "environment_variables": {
+      "NEXT_PUBLIC_FIREBASE_API_KEY": "@FIREBASE_API_KEY",
+      "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN": "@FIREBASE_AUTH_DOMAIN",
+      "NEXT_PUBLIC_FIREBASE_PROJECT_ID": "@FIREBASE_PROJECT_ID",
+      "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET": "@FIREBASE_STORAGE_BUCKET",
+      "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "@FIREBASE_MESSAGING_SENDER_ID",
+      "NEXT_PUBLIC_FIREBASE_APP_ID": "@FIREBASE_APP_ID",
+      "JWT_SECRET": "@JWT_SECRET"
+    }
+  },
+  "functions": {
+    "directory": "functions",
+    "include": ["api/*", "cloudflare-worker.js"],
+    "exclude": ["node_modules", "*.test.js"]
+  },
+  "headers": {
+    "/*": {
+      "X-Frame-Options": "DENY",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+      "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://*.firebaseio.com wss://*.firebaseio.com https://firestore.googleapis.com; frame-src 'self' https://sahl-request.firebaseapp.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;"
+    },
+    "/_next/static/*": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/_next/image/*": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/static/*": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/api/*": {
+      "Cache-Control": "no-store, no-cache, must-revalidate"
+    },
+    "/*.js": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/*.css": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/*.jpg": {
+      "Cache-Control": "public, max-age=604800, immutable"
+    },
+    "/*.jpeg": {
+      "Cache-Control": "public, max-age=604800, immutable"
+    },
+    "/*.png": {
+      "Cache-Control": "public, max-age=604800, immutable"
+    },
+    "/*.gif": {
+      "Cache-Control": "public, max-age=604800, immutable"
+    },
+    "/*.svg": {
+      "Cache-Control": "public, max-age=604800, immutable"
+    },
+    "/*.webp": {
+      "Cache-Control": "public, max-age=604800, immutable"
+    },
+    "/*.avif": {
+      "Cache-Control": "public, max-age=604800, immutable"
+    },
+    "/*.woff": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/*.woff2": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/*.ttf": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/*.eot": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/*.ico": {
+      "Cache-Control": "public, max-age=604800"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/dashboard",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/admin",
+      "destination": "/login",
+      "permanent": false
+    },
+    {
+      "source": "/old-path",
+      "destination": "/new-path",
+      "permanent": true,
+      "status": 301
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/cdn/:path*",
+      "destination": "https://cdn.sahl.com/:path*"
+    }
+  ],
+  "plugins": [
+    {
+      "package": "@cloudflare/pages-plugin-cloudflare-analytics"
+    },
+    {
+      "package": "@cloudflare/pages-plugin-sentry",
+      "config": {
+        "dsn": "@SENTRY_DSN"
+      }
+    },
+    {
+      "package": "@cloudflare/pages-plugin-rum"
+    }
+  ],
+  "compatibility_flags": [
+    "nodejs_compat",
+    "streams_enable_constructors",
+    "transformstream_enable_standard_constructor"
+  ],
+  "compatibility_date": "2024-01-01",
+  "preview": {
+    "environment_variables": {
+      "ENVIRONMENT": "preview"
+    }
+  },
+  "production": {
+    "environment_variables": {
+      "ENVIRONMENT": "production"
+    }
+  },
+  "optimization": {
+    "minify": {
+      "javascript": true,
+      "css": true,
+      "html": true
+    },
+    "images": {
+      "compression": "lossy",
+      "formats": ["webp", "avif"],
+      "lazy_loading": true,
+      "responsive": true,
+      "sizes": [640, 768, 1024, 1280, 1536]
+    },
+    "fonts": {
+      "display": "swap",
+      "preload": true
+    },
+    "prefetch": {
+      "enabled": true,
+      "strategy": "document"
+    },
+    "preload": {
+      "critical_css": true,
+      "critical_js": true
+    },
+    "compression": {
+      "brotli": true,
+      "gzip": true
+    },
+    "http2_push": true,
+    "http3": true,
+    "early_hints": true
+  },
+  "performance": {
+    "budget": {
+      "javascript": 500000,
+      "css": 100000,
+      "images": 1000000,
+      "fonts": 200000,
+      "total": 2000000
+    },
+    "metrics": {
+      "first_contentful_paint": 1800,
+      "largest_contentful_paint": 2500,
+      "first_input_delay": 100,
+      "cumulative_layout_shift": 0.1,
+      "time_to_interactive": 3800
+    }
+  },
+  "security": {
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 60,
+      "requests_per_hour": 1000
+    },
+    "waf": {
+      "enabled": true,
+      "rules": ["OWASP_CRS"]
+    },
+    "bot_management": {
+      "enabled": true,
+      "challenge_suspicious": true,
+      "block_definitely_automated": true
+    },
+    "ddos_protection": {
+      "enabled": true,
+      "sensitivity": "high"
+    },
+    "access": {
+      "enabled": false,
+      "policies": []
+    }
+  },
+  "analytics": {
+    "web_analytics": {
+      "enabled": true,
+      "token": "@WEB_ANALYTICS_TOKEN"
+    },
+    "rum": {
+      "enabled": true,
+      "sample_rate": 0.1
+    },
+    "logpush": {
+      "enabled": true,
+      "destination": "r2://logs-bucket/",
+      "dataset": "http_requests",
+      "frequency": "5min"
+    }
+  },
+  "cdn": {
+    "argo": true,
+    "tiered_caching": true,
+    "railgun": true,
+    "smart_routing": true,
+    "polish": "lossy",
+    "mirage": true,
+    "rocket_loader": true,
+    "zaraz": true,
+    "always_online": true,
+    "crawler_hints": true,
+    "orphan_file_protection": true
+  },
+  "workers": {
+    "routes": [
+      {
+        "pattern": "*/api/*",
+        "script": "api-worker"
+      },
+      {
+        "pattern": "*/images/*",
+        "script": "image-optimizer"
+      },
+      {
+        "pattern": "*/static/*",
+        "script": "static-handler"
+      }
+    ],
+    "kv_namespaces": [
+      {
+        "binding": "CACHE_KV",
+        "id": "@CACHE_KV_ID"
+      },
+      {
+        "binding": "SESSION_KV",
+        "id": "@SESSION_KV_ID"
+      },
+      {
+        "binding": "RATE_LIMIT_KV",
+        "id": "@RATE_LIMIT_KV_ID"
+      }
+    ],
+    "durable_objects": [
+      {
+        "binding": "RATE_LIMITER",
+        "class": "RateLimiter"
+      },
+      {
+        "binding": "WEBSOCKET",
+        "class": "WebSocketHandler"
+      }
+    ],
+    "r2_buckets": [
+      {
+        "binding": "ASSETS",
+        "bucket_name": "sahl-assets"
+      },
+      {
+        "binding": "DOCUMENTS",
+        "bucket_name": "sahl-documents"
+      }
+    ],
+    "d1_databases": [
+      {
+        "binding": "DB",
+        "database_name": "financial-db",
+        "database_id": "@DATABASE_ID"
+      }
+    ],
+    "queues": [
+      {
+        "binding": "TASK_QUEUE",
+        "queue_name": "sahl-tasks"
+      }
+    ],
+    "analytics_engine": [
+      {
+        "binding": "ANALYTICS",
+        "dataset": "sahl_analytics"
+      }
+    ]
+  },
+  "experimental": {
+    "edge_side_includes": true,
+    "html_rewriter": true,
+    "webassembly": true,
+    "service_bindings": true,
+    "mtls": false
+  },
+  "monitoring": {
+    "health_checks": [
+      {
+        "path": "/health",
+        "interval": 60,
+        "timeout": 5,
+        "retries": 2,
+        "expected_codes": [200, 204]
+      }
+    ],
+    "status_page": {
+      "enabled": true,
+      "url": "https://status.sahl.com"
+    },
+    "alerts": {
+      "email": ["admin@sahl.com"],
+      "webhook": "@ALERT_WEBHOOK_URL"
+    }
+  },
+  "deployment_hooks": {
+    "pre_build": [],
+    "post_build": [],
+    "pre_deploy": [],
+    "post_deploy": [
+      {
+        "command": "curl",
+        "args": ["-X", "POST", "@DEPLOY_NOTIFICATION_URL"]
+      }
+    ]
+  },
+  "branch_deployments": {
+    "enabled": true,
+    "include": ["main", "develop", "feature/*"],
+    "exclude": ["test/*", "temp/*"]
+  },
+  "rollback": {
+    "enabled": true,
+    "auto_rollback_on_failure": true,
+    "retention_days": 30
+  }
+}

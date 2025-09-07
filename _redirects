@@ -1,0 +1,4 @@
+# Redirects for Cloudflare Pages
+# Force HTTPS
+http://gasah.pages.dev/* https://gasah.pages.dev/:splat 301!
+http://gasah.com/* https://gasah.com/:splat 301!

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "REQ-1757191882500",
+    "type": "leave",
+    "title": "Test Leave Request",
+    "employeeName": "Test Employee",
+    "userId": "test@example.com",
+    "branch": "laban",
+    "reason": "Medical leave",
+    "status": "approved",
+    "submittedAt": "2025-09-06T20:51:22.500Z",
+    "created_at": "2025-09-06T20:51:22.500Z",
+    "updated_at": "2025-09-06T20:51:40.428Z",
+    "startDate": "2025-09-10",
+    "endDate": "2025-09-15",
+    "reviewNotes": "Approved by admin for medical reasons",
+    "reviewedAt": "2025-09-06T20:51:40.428Z"
+  },
+  {
+    "id": "REQ-1757192091188",
+    "type": "resignation",
+    "title": "",
+    "employeeName": "المدير المسؤول",
+    "userId": "admin@sahl.com",
+    "branch": "admin",
+    "reason": "\nجحمك\nمكطمةةو ",
+    "status": "pending",
+    "submittedAt": "2025-09-06T20:54:51.188Z",
+    "created_at": "2025-09-06T20:54:51.188Z",
+    "updated_at": "2025-09-06T20:54:51.188Z",
+    "lastWorkingDay": "2025-09-05T21:00:00.000Z"
+  },
+  {
+    "id": "REQ-1757194324146",
+    "type": "advance",
+    "title": "",
+    "employeeName": "مدير النظام",
+    "userId": "admin@sahl.com",
+    "branch": "headquarters",
+    "reason": "دجخ\nحهخعغنبفيسءبغلعهخح",
+    "status": "pending",
+    "submittedAt": "2025-09-06T21:32:04.146Z",
+    "created_at": "2025-09-06T21:32:04.146Z",
+    "updated_at": "2025-09-06T21:32:04.146Z",
+    "amount": 68888
+  }
+]

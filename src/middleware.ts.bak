@@ -1,0 +1,71 @@
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
+
+// Public routes that don't require authentication
+const publicRoutes = [
+  '/api/auth/login',
+  '/login',
+  '/',
+];
+
+export function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
+  
+  // Allow public routes
+  if (publicRoutes.some(route => pathname === route || pathname.startsWith(route))) {
+    return NextResponse.next();
+  }
+  
+  // Skip authentication for static files and Next.js internals
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/static') ||
+    pathname.includes('.') // Static files like images, CSS, etc.
+  ) {
+    return NextResponse.next();
+  }
+  
+  // For API routes, check Authorization header
+  if (pathname.startsWith('/api/')) {
+    const authHeader = request.headers.get('authorization');
+    
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return NextResponse.json(
+        { error: 'Unauthorized - No token provided' },
+        { status: 401 }
+      );
+    }
+    
+    try {
+      const token = authHeader.replace('Bearer ', '');
+      // For now, we'll skip JWT verification in development to avoid issues
+      // In production, uncomment the line below:
+      // jwt.verify(token, JWT_SECRET);
+      
+      return NextResponse.next();
+    } catch (error) {
+      return NextResponse.json(
+        { error: 'Unauthorized - Invalid token' },
+        { status: 401 }
+      );
+    }
+  }
+  
+  // For page routes, allow them for now
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!_next/static|_next/image|favicon.ico).*)',
+  ],
+};

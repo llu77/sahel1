@@ -1,0 +1,90 @@
+{
+  "laban": [
+    {
+      "id": "laban-1",
+      "branch": "laban",
+      "weeklyIncomeThreshold": 50000,
+      "bonusAmount": 1000
+    },
+    {
+      "id": "laban-2",
+      "branch": "laban",
+      "weeklyIncomeThreshold": 40000,
+      "bonusAmount": 800
+    },
+    {
+      "id": "laban-3",
+      "branch": "laban",
+      "weeklyIncomeThreshold": 30000,
+      "bonusAmount": 600
+    },
+    {
+      "id": "laban-4",
+      "branch": "laban",
+      "weeklyIncomeThreshold": 20000,
+      "bonusAmount": 400
+    },
+    {
+      "id": "laban-5",
+      "branch": "laban",
+      "weeklyIncomeThreshold": 10000,
+      "bonusAmount": 200
+    },
+    {
+      "id": "laban-6",
+      "branch": "laban",
+      "weeklyIncomeThreshold": 0,
+      "bonusAmount": 0
+    },
+    {
+      "id": "laban-1757191141812",
+      "branch": "laban",
+      "weeklyIncomeThreshold": 60000,
+      "bonusAmount": 1200
+    },
+    {
+      "id": "laban-1757192154087",
+      "branch": "laban",
+      "weeklyIncomeThreshold": 1000,
+      "bonusAmount": 1
+    }
+  ],
+  "tuwaiq": [
+    {
+      "id": "tuwaiq-1",
+      "branch": "tuwaiq",
+      "weeklyIncomeThreshold": 50000,
+      "bonusAmount": 1000
+    },
+    {
+      "id": "tuwaiq-2",
+      "branch": "tuwaiq",
+      "weeklyIncomeThreshold": 40000,
+      "bonusAmount": 800
+    },
+    {
+      "id": "tuwaiq-3",
+      "branch": "tuwaiq",
+      "weeklyIncomeThreshold": 30000,
+      "bonusAmount": 600
+    },
+    {
+      "id": "tuwaiq-4",
+      "branch": "tuwaiq",
+      "weeklyIncomeThreshold": 20000,
+      "bonusAmount": 400
+    },
+    {
+      "id": "tuwaiq-5",
+      "branch": "tuwaiq",
+      "weeklyIncomeThreshold": 10000,
+      "bonusAmount": 200
+    },
+    {
+      "id": "tuwaiq-6",
+      "branch": "tuwaiq",
+      "weeklyIncomeThreshold": 0,
+      "bonusAmount": 0
+    }
+  ]
+}
