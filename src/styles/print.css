@@ -1,0 +1,525 @@
+/* Enhanced Print Styles for Sahl Financial System - A4 Format */
+
+@media print {
+  /* Reset and base styles */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Page setup for A4 */
+  @page {
+    size: A4 portrait;
+    margin: 20mm 15mm 20mm 15mm;
+  }
+
+  /* Hide non-printable elements */
+  .no-print,
+  .sidebar,
+  nav,
+  header:not(.print-header),
+  footer:not(.print-footer),
+  button,
+  .toaster,
+  [role="navigation"],
+  [role="complementary"],
+  .fixed,
+  .sticky,
+  .screen-only {
+    display: none !important;
+  }
+
+  /* Body and main content */
+  html, body {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  body {
+    font-family: 'Cairo', 'Arial', sans-serif !important;
+    font-size: 10pt !important;
+    line-height: 1.5 !important;
+    color: #000 !important;
+  }
+  
+  /* Force all text to be black */
+  * {
+    color: #000 !important;
+  }
+
+  /* Main print container */
+  .print-page {
+    width: 180mm !important;
+    min-height: 257mm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1) !important;
+  }
+
+  main,
+  .print-container {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 10mm !important;
+    background: white !important;
+  }
+
+  /* Enhanced Print header with logo */
+  .print-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    border-bottom: 2px solid #000 !important;
+    padding-bottom: 8mm !important;
+    margin-bottom: 10mm !important;
+    width: 100% !important;
+  }
+
+  .print-header .logo-section {
+    flex: 0 0 auto !important;
+  }
+
+  .print-header .logo-section img {
+    width: 100px !important;
+    height: auto !important;
+    max-height: 40px !important;
+  }
+
+  .print-header .title-section {
+    flex: 1 !important;
+    text-align: center !important;
+    padding: 0 10mm !important;
+  }
+
+  .print-header .title-section h1 {
+    font-size: 16pt !important;
+    font-weight: bold !important;
+    margin: 0 0 3mm 0 !important;
+    color: #000 !important;
+  }
+
+  .print-header .title-section .subtitle {
+    font-size: 11pt !important;
+    color: #333 !important;
+    margin: 2mm 0 !important;
+  }
+
+  .print-header .info-section {
+    flex: 0 0 auto !important;
+    text-align: right !important;
+    font-size: 9pt !important;
+    min-width: 50mm !important;
+  }
+
+  .print-header .info-section .info-line {
+    margin: 1mm 0 !important;
+    color: #333 !important;
+  }
+
+  /* Invoice Style Table for Product Requests */
+  .invoice-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 10mm 0 !important;
+    background: white !important;
+  }
+
+  .invoice-table thead {
+    background-color: #f5f5f5 !important;
+    border-bottom: 2px solid #000 !important;
+  }
+
+  .invoice-table th {
+    padding: 4mm 3mm !important;
+    text-align: right !important;
+    font-weight: bold !important;
+    font-size: 10pt !important;
+    border: 1px solid #000 !important;
+    background-color: #e8e8e8 !important;
+  }
+
+  .invoice-table td {
+    padding: 3mm !important;
+    text-align: right !important;
+    font-size: 10pt !important;
+    border: 1px solid #999 !important;
+    background: white !important;
+  }
+
+  .invoice-table .product-name {
+    text-align: right !important;
+    font-weight: 500 !important;
+  }
+
+  .invoice-table .quantity {
+    text-align: center !important;
+    width: 15% !important;
+  }
+
+  .invoice-table .price {
+    text-align: left !important;
+    width: 20% !important;
+  }
+
+  .invoice-table .total {
+    text-align: left !important;
+    width: 20% !important;
+    font-weight: bold !important;
+  }
+
+  .invoice-table tfoot {
+    border-top: 2px solid #000 !important;
+  }
+
+  .invoice-table tfoot td {
+    padding: 4mm 3mm !important;
+    font-weight: bold !important;
+    font-size: 11pt !important;
+    background-color: #f0f0f0 !important;
+  }
+
+  /* Invoice Summary Box */
+  .invoice-summary {
+    border: 2px solid #000 !important;
+    padding: 5mm !important;
+    margin: 10mm 0 !important;
+    background-color: #f9f9f9 !important;
+  }
+
+  .invoice-summary-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin: 2mm 0 !important;
+    font-size: 11pt !important;
+  }
+
+  .invoice-summary-row.total {
+    border-top: 1px solid #000 !important;
+    padding-top: 3mm !important;
+    margin-top: 3mm !important;
+    font-weight: bold !important;
+    font-size: 12pt !important;
+  }
+
+  /* Branch and Supervisor Info Footer */
+  .print-branch-info {
+    display: block !important;
+    border-top: 2px solid #000 !important;
+    margin-top: 15mm !important;
+    padding-top: 5mm !important;
+    font-size: 10pt !important;
+  }
+
+  .branch-info-grid {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-bottom: 5mm !important;
+  }
+
+  .branch-info-item {
+    flex: 1 !important;
+    text-align: center !important;
+  }
+
+  .branch-info-label {
+    font-weight: bold !important;
+    color: #333 !important;
+    margin-bottom: 2mm !important;
+  }
+
+  .branch-info-value {
+    font-size: 11pt !important;
+    color: #000 !important;
+  }
+
+  /* Approval Section */
+  .approval-section {
+    display: flex !important;
+    justify-content: space-around !important;
+    margin: 20mm 0 10mm 0 !important;
+    page-break-inside: avoid !important;
+  }
+
+  .approval-box {
+    text-align: center !important;
+    width: 30% !important;
+  }
+
+  .approval-stamp {
+    width: 80px !important;
+    height: 80px !important;
+    border: 2px solid #000 !important;
+    border-radius: 50% !important;
+    margin: 0 auto 3mm auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: bold !important;
+    font-size: 14pt !important;
+  }
+
+  .approval-label {
+    font-size: 10pt !important;
+    margin-top: 3mm !important;
+  }
+
+  .signature-line {
+    border-bottom: 1px solid #000 !important;
+    width: 100% !important;
+    height: 15mm !important;
+    margin: 5mm 0 2mm 0 !important;
+  }
+
+  /* Tables */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto !important;
+    font-size: 9pt !important;
+    margin: 8mm 0 !important;
+    background: white !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  tbody {
+    display: table-row-group !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+
+  th {
+    background-color: #e8e8e8 !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    padding: 3mm !important;
+    border: 1px solid #999 !important;
+    text-align: right !important;
+  }
+
+  td {
+    padding: 2mm 3mm !important;
+    border: 1px solid #ccc !important;
+    text-align: right !important;
+    background-color: white !important;
+  }
+
+  /* Cards and containers */
+  .card {
+    border: 1px solid #999 !important;
+    padding: 5mm !important;
+    margin: 5mm 0 !important;
+    page-break-inside: avoid !important;
+    background: white !important;
+    border-radius: 0 !important;
+  }
+
+  .card-header {
+    background-color: #f0f0f0 !important;
+    padding: 3mm 5mm !important;
+    font-weight: bold !important;
+    border-bottom: 1px solid #999 !important;
+    margin: -5mm -5mm 5mm -5mm !important;
+  }
+
+  .card-content {
+    padding: 5mm !important;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 16pt !important;
+    font-weight: bold !important;
+    margin: 8mm 0 4mm 0 !important;
+    page-break-after: avoid !important;
+    color: #000 !important;
+  }
+
+  h2 {
+    font-size: 13pt !important;
+    font-weight: bold !important;
+    margin: 6mm 0 3mm 0 !important;
+    page-break-after: avoid !important;
+    color: #000 !important;
+  }
+
+  h3 {
+    font-size: 11pt !important;
+    font-weight: bold !important;
+    margin: 4mm 0 2mm 0 !important;
+    page-break-after: avoid !important;
+    color: #000 !important;
+  }
+
+  p {
+    margin: 2mm 0 !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Statistics and summary boxes */
+  .stat-box,
+  .summary-box {
+    border: 1px solid #000 !important;
+    padding: 4mm !important;
+    margin: 5mm 0 !important;
+    page-break-inside: avoid !important;
+    background-color: #f9f9f9 !important;
+  }
+
+  .stat-value {
+    font-size: 13pt !important;
+    font-weight: bold !important;
+    color: #000 !important;
+  }
+
+  .stat-label {
+    font-size: 9pt !important;
+    color: #555 !important;
+    margin-top: 2mm !important;
+  }
+
+  /* Badges and status indicators */
+  .badge {
+    display: inline-block !important;
+    padding: 1mm 3mm !important;
+    border: 1px solid #666 !important;
+    border-radius: 2mm !important;
+    font-size: 8pt !important;
+    background-color: #f0f0f0 !important;
+    color: #000 !important;
+    margin: 0 1mm !important;
+  }
+
+  .badge.success {
+    background-color: #d4edda !important;
+    border-color: #28a745 !important;
+    color: #155724 !important;
+  }
+
+  .badge.danger {
+    background-color: #f8d7da !important;
+    border-color: #dc3545 !important;
+    color: #721c24 !important;
+  }
+
+  .badge.warning {
+    background-color: #fff3cd !important;
+    border-color: #ffc107 !important;
+    color: #856404 !important;
+  }
+
+  /* Footer for print */
+  .print-footer {
+    position: fixed !important;
+    bottom: 10mm !important;
+    left: 15mm !important;
+    right: 15mm !important;
+    border-top: 1px solid #999 !important;
+    padding-top: 3mm !important;
+    font-size: 8pt !important;
+    text-align: center !important;
+    color: #666 !important;
+  }
+
+  .print-date {
+    font-size: 8pt !important;
+    color: #666 !important;
+    text-align: left !important;
+  }
+
+  /* Page numbers */
+  .page-number {
+    position: fixed !important;
+    bottom: 5mm !important;
+    right: 15mm !important;
+    font-size: 8pt !important;
+    color: #666 !important;
+  }
+
+  .page-number::after {
+    content: "صفحة " counter(page) !important;
+  }
+
+  /* Page breaks */
+  .page-break {
+    page-break-after: always !important;
+  }
+
+  .no-break {
+    page-break-inside: avoid !important;
+  }
+
+  /* Hide interactive elements */
+  input,
+  select,
+  textarea {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+  }
+
+  /* Images */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Grid layouts */
+  .grid {
+    display: block !important;
+  }
+
+  .grid > * {
+    page-break-inside: avoid !important;
+    margin-bottom: 5mm !important;
+  }
+}
+
+/* Print-specific utility classes */
+.print-only {
+  display: none;
+}
+
+@media print {
+  .print-only {
+    display: block !important;
+  }
+  
+  .screen-only {
+    display: none !important;
+  }
+  
+  /* Ensure white background */
+  * {
+    background: white !important;
+  }
+  
+  .invoice-table thead,
+  .invoice-table th {
+    background-color: #e8e8e8 !important;
+  }
+  
+  .invoice-table tfoot td,
+  .card-header,
+  .stat-box,
+  .summary-box,
+  .invoice-summary {
+    background-color: #f5f5f5 !important;
+  }
+}
